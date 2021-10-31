@@ -12,8 +12,8 @@ template <class T>
 class ExplorerBox : public IKeyboard
 {
 protected:
-	short column_len[COLUMNS_COUNT]{ 32,20,12 };
-	short entries_count = 10;
+	short column_len[COLUMNS_COUNT]{ 64,20,16 };
+	short entries_count = 30;
 	int shift_pos = 0;
 	int selected_pos = 0;
 
