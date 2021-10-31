@@ -21,15 +21,11 @@ protected:
 	vector<T> entries;
 
 	FileManager* fm;
-public:
+
 	void goUp();
 	void goDown();
 	virtual void goEnter() = 0;
 
-	int getBoxHeight();
-	int getBoxWidth();
-
-	void drawAll(array<string, COLUMNS_COUNT> names);
 	void drawBox();
 	void drawColumnNames(array<string, COLUMNS_COUNT> names);
 	void drawEntries();
@@ -37,6 +33,12 @@ public:
 	virtual void drawEntry(int pos) = 0;
 	virtual void drawPath();
 	void drawInfo(string line);
+public:
+	int getBoxHeight();
+	int getBoxWidth();
+
+	void drawAll(array<string, COLUMNS_COUNT> names);
+	virtual void getInput() = 0;
 };
 
 template<class T>

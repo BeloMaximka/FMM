@@ -18,14 +18,13 @@ class FolderBox : public ExplorerBox<Entry>
 	};
 	set<string> buffer;
 	Operations operation = Operations::NONE;
-public:
-	FolderBox(FileManager* fm);
+
 	void drawError(FileManager::Code code);
 
 	bool isRestricted(char c);
 	string getStringInput(string begin);
 	bool confirm(string str);
-	void getInput();
+
 	void goBack();
 	void goEnter();
 
@@ -49,4 +48,7 @@ public:
 	bool isInBuffer(string full_path);
 	bool isBufferEmpty();
 	void switchHighlighted();
+public:
+	FolderBox(FileManager* fm);
+	void getInput();
 };
