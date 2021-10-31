@@ -1,5 +1,6 @@
 # File Manager Mda
-Управление:  
+![alt text](https://i.ibb.co/QkNwkPC/fmm.jpg)  
+## Управление:  
 Стрелки - перемещение  
 E - зайти в папку  
 Q - выйти из папки  
