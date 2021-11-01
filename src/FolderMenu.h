@@ -1,8 +1,8 @@
 #pragma once
-#include "ExplorerBox.h"
+#include "GenericMenu.h"
 #include <set>
 
-class FolderBox : public ExplorerBox<Entry>
+class FolderMenu : public GenericMenu<Entry>
 {
 	enum COLUMNS
 	{
@@ -49,6 +49,6 @@ class FolderBox : public ExplorerBox<Entry>
 	bool isBufferEmpty();
 	void switchHighlighted();
 public:
-	FolderBox(FileManager* fm);
+	FolderMenu(FileManager* fm);
 	void getInput();
 };

@@ -1,13 +1,13 @@
-﻿#include "FolderBox.h"
-#include "VolumesBox.h"
+﻿#include "FolderMenu.h"
+#include "VolumesMenu.h"
 
-FolderBox::FolderBox(FileManager* fm)
+FolderMenu::FolderMenu(FileManager* fm)
 {
 	this->fm = fm;
 	getEntries();
 }
 
-void FolderBox::drawError(FileManager::Code code)
+void FolderMenu::drawError(FileManager::Code code)
 {
 	switch (code)
 	{
@@ -29,7 +29,7 @@ void FolderBox::drawError(FileManager::Code code)
 	}
 }
 
-bool FolderBox::isRestricted(char c)
+bool FolderMenu::isRestricted(char c)
 {
 	char restricted[] = "\\/:*?\"<>|";
 	for (auto temp : restricted)
@@ -39,7 +39,7 @@ bool FolderBox::isRestricted(char c)
 	return false;
 }
 
-string FolderBox::getStringInput(string begin)
+string FolderMenu::getStringInput(string begin)
 {
 	COORD draw_pos = pos;
 	draw_pos.X++;
@@ -74,7 +74,7 @@ string FolderBox::getStringInput(string begin)
 	}
 }
 
-bool FolderBox::confirm(string str)
+bool FolderMenu::confirm(string str)
 {
 	COORD draw_pos = pos;
 	draw_pos.X++;
@@ -96,7 +96,7 @@ bool FolderBox::confirm(string str)
 	}
 }
 
-void FolderBox::getInput()
+void FolderMenu::getInput()
 {
 	int code = _getch();
 	if (code == ARROW || code == F012) code = _getch();
@@ -171,11 +171,11 @@ void FolderBox::getInput()
 	}
 }
 
-void FolderBox::goBack()
+void FolderMenu::goBack()
 {
 	if (fm->back() == FileManager::Code::ROOT)
 	{
-		VolumesBox vb(fm);
+		VolumesMenu vb(fm);
 		vb.startLoop();
 	}
 	shift_pos = 0;
@@ -193,7 +193,7 @@ void FolderBox::goBack()
 	drawPath();
 }
 
-void FolderBox::goEnter()
+void FolderMenu::goEnter()
 {
 	if (fm->enter(entries[shift_pos + selected_pos].name) == FileManager::Code::DOESNT_EXIST)
 	{
@@ -202,17 +202,17 @@ void FolderBox::goEnter()
 	updateEntries();
 }
 
-string FolderBox::getFullPathToSelected()
+string FolderMenu::getFullPathToSelected()
 {
 	return fm->getCurentPath() + entries[shift_pos + selected_pos].name;
 }
 
-string FolderBox::getFullPath(int pos)
+string FolderMenu::getFullPath(int pos)
 {
 	return fm->getCurentPath() + entries[shift_pos + pos].name;
 }
 
-void FolderBox::showSize()
+void FolderMenu::showSize()
 {
 	string path = getFullPathToSelected();
 	unsigned long long size;
@@ -224,7 +224,7 @@ void FolderBox::showSize()
 	else drawInfo("Size: " + fm->formatSize(size));
 }
 
-void FolderBox::paste()
+void FolderMenu::paste()
 {
 	int count = buffer.size();
 	int errors = 0;
@@ -249,7 +249,7 @@ void FolderBox::paste()
 	updateEntries();
 }
 
-void FolderBox::rename()
+void FolderMenu::rename()
 {
 	string name = getStringInput("Rename");
 	FileManager::Code code = fm->rename(getFullPathToSelected(), name);
@@ -260,7 +260,7 @@ void FolderBox::rename()
 	updateEntries();
 }
 
-void FolderBox::deleteCurrent()
+void FolderMenu::deleteCurrent()
 {
 	if (confirm("Confirm deletion:"))
 	{
@@ -275,7 +275,7 @@ void FolderBox::deleteCurrent()
 		drawInfo("Canceled.");
 }
 
-void FolderBox::createFolder()
+void FolderMenu::createFolder()
 {
 	string name = getStringInput("New folder name");
 	FileManager::Code code = fm->createFolder(name);
@@ -286,7 +286,7 @@ void FolderBox::createFolder()
 	updateEntries();
 }
 
-void FolderBox::createFile()
+void FolderMenu::createFile()
 {
 	string name = getStringInput("New file name");
 	FileManager::Code code = fm->createFile(name);
@@ -297,7 +297,7 @@ void FolderBox::createFile()
 	updateEntries();
 }
 
-void FolderBox::find()
+void FolderMenu::find()
 {
 	string name = getStringInput("To find");
 	FileManager::Code code = fm->find(name);
@@ -310,7 +310,7 @@ void FolderBox::find()
 	updateEntries();
 }
 
-void FolderBox::getEntries()
+void FolderMenu::getEntries()
 {
 	FileManager::Code code = fm->getDirectoryContents(entries);
 	if (code != FileManager::Code::SUCCESS)
@@ -320,7 +320,7 @@ void FolderBox::getEntries()
 	}
 }
 
-void FolderBox::updateEntries()
+void FolderMenu::updateEntries()
 {
 	shift_pos = 0;
 	selected_pos = 0;
@@ -335,32 +335,32 @@ void FolderBox::updateEntries()
 	drawPath();
 }
 
-void FolderBox::addToBuffer(string full_path)
+void FolderMenu::addToBuffer(string full_path)
 {
 	buffer.insert(full_path);
 }
 
-void FolderBox::removeFromBuffer(string full_path)
+void FolderMenu::removeFromBuffer(string full_path)
 {
 	buffer.erase(full_path);
 }
 
-void FolderBox::clearBuffer()
+void FolderMenu::clearBuffer()
 {
 	buffer.clear();
 }
 
-bool FolderBox::isInBuffer(string full_path)
+bool FolderMenu::isInBuffer(string full_path)
 {
 	return buffer.find(full_path) != buffer.end();
 }
 
-bool FolderBox::isBufferEmpty()
+bool FolderMenu::isBufferEmpty()
 {
 	return buffer.size() == 0;
 }
 
-void FolderBox::switchHighlighted()
+void FolderMenu::switchHighlighted()
 {
 	string path = getFullPathToSelected();
 
@@ -368,7 +368,7 @@ void FolderBox::switchHighlighted()
 	else addToBuffer(path);
 }
 
-void FolderBox::drawEntry(int pos)
+void FolderMenu::drawEntry(int pos)
 {
 	auto& entry = entries[shift_pos + pos];
 

@@ -18,7 +18,7 @@
     <ClCompile Include="src\FileManager.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\FolderBox.cpp">
+    <ClCompile Include="src\FolderMenu.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="src\IKeyboard.cpp">
@@ -30,7 +30,7 @@
     <ClCompile Include="src\Renderer.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\VolumesBox.cpp">
+    <ClCompile Include="src\VolumesMenu.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -38,13 +38,13 @@
     <ClInclude Include="src\Entry.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\ExplorerBox.h">
+    <ClInclude Include="src\GenericMenu.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="src\FileManager.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\FolderBox.h">
+    <ClInclude Include="src\FolderMenu.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="src\IKeyboard.h">
@@ -56,7 +56,7 @@
     <ClInclude Include="src\Volume.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\VolumesBox.h">
+    <ClInclude Include="src\VolumesMenu.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

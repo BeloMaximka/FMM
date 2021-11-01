@@ -1,12 +1,12 @@
-#include "VolumesBox.h"
+#include "VolumesMenu.h"
 
-VolumesBox::VolumesBox(FileManager* fm)
+VolumesMenu::VolumesMenu(FileManager* fm)
 {
 	this->fm = fm;
 	getEntries();
 }
 
-void VolumesBox::startLoop()
+void VolumesMenu::startLoop()
 {
 	drawAll({ "Letter", "Capacity", "Free space" });
 	while (!finish)
@@ -18,7 +18,7 @@ void VolumesBox::startLoop()
 	}
 }
 
-void VolumesBox::getInput()
+void VolumesMenu::getInput()
 {
 	int code = _getch();
 	if (code == ARROW) code = _getch();
@@ -36,13 +36,13 @@ void VolumesBox::getInput()
 	}
 }
 
-void VolumesBox::goEnter()
+void VolumesMenu::goEnter()
 {
 	fm->enter(entries[shift_pos + selected_pos].letter + string(":"));
 	finish = true;
 }
 
-void VolumesBox::drawEntry(int pos)
+void VolumesMenu::drawEntry(int pos)
 {
 	if (pos == selected_pos)
 		Renderer::setColor(Renderer::Colors::INVERTED);
@@ -76,7 +76,7 @@ void VolumesBox::drawEntry(int pos)
 	Renderer::setColor(Renderer::Colors::BASIC);
 }
 
-void VolumesBox::drawPath()
+void VolumesMenu::drawPath()
 {
 	COORD draw_pos = pos;
 	draw_pos.X++;
@@ -85,7 +85,7 @@ void VolumesBox::drawPath()
 	cout << "My computer";
 }
 
-void VolumesBox::getEntries()
+void VolumesMenu::getEntries()
 {
 	entries = fm->getDisks();
 }

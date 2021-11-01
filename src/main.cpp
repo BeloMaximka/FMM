@@ -1,10 +1,10 @@
 ﻿#include "FileManager.h"
-#include "FolderBox.h"
+#include "FolderMenu.h"
 
 int main()
 {
 	FileManager fm;
-	FolderBox fb(&fm);
+	FolderMenu fb(&fm);
 	Renderer::init(fb.getBoxHeight(), fb.getBoxWidth());
 	fb.drawAll({ "Name", "Date", "Size" });
 	while (true)

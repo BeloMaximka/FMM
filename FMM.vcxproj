@@ -20,21 +20,21 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\FileManager.cpp" />
-    <ClCompile Include="src\FolderBox.cpp" />
+    <ClCompile Include="src\FolderMenu.cpp" />
     <ClCompile Include="src\IKeyboard.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
-    <ClCompile Include="src\VolumesBox.cpp" />
+    <ClCompile Include="src\VolumesMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Entry.h" />
-    <ClInclude Include="src\ExplorerBox.h" />
+    <ClInclude Include="src\GenericMenu.h" />
     <ClInclude Include="src\FileManager.h" />
-    <ClInclude Include="src\FolderBox.h" />
+    <ClInclude Include="src\FolderMenu.h" />
     <ClInclude Include="src\IKeyboard.h" />
     <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\Volume.h" />
-    <ClInclude Include="src\VolumesBox.h" />
+    <ClInclude Include="src\VolumesMenu.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

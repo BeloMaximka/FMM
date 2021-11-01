@@ -9,7 +9,7 @@ using namespace std;
 #define COLUMNS_COUNT 3
 
 template <class T>
-class ExplorerBox : public IKeyboard
+class GenericMenu : public IKeyboard
 {
 protected:
 	short column_len[COLUMNS_COUNT]{ 64,20,16 };
@@ -42,7 +42,7 @@ public:
 };
 
 template<class T>
-inline void ExplorerBox<T>::goUp()
+inline void GenericMenu<T>::goUp()
 {
 	if (selected_pos == 0)
 	{
@@ -61,7 +61,7 @@ inline void ExplorerBox<T>::goUp()
 }
 
 template<class T>
-inline void ExplorerBox<T>::goDown()
+inline void GenericMenu<T>::goDown()
 {
 	if (shift_pos + selected_pos + 1 >= entries.size()) return;
 	if (selected_pos + 1 == entries_count)
@@ -81,19 +81,19 @@ inline void ExplorerBox<T>::goDown()
 }
 
 template<class T>
-inline int ExplorerBox<T>::getBoxHeight()
+inline int GenericMenu<T>::getBoxHeight()
 {
 	return 10 + entries_count;
 }
 
 template<class T>
-inline int ExplorerBox<T>::getBoxWidth()
+inline int GenericMenu<T>::getBoxWidth()
 {
 	return column_len[0] + column_len[1] + column_len[2] + 4;
 }
 
 template<class T>
-inline void ExplorerBox<T>::drawAll(array<string, COLUMNS_COUNT> names)
+inline void GenericMenu<T>::drawAll(array<string, COLUMNS_COUNT> names)
 {
 	drawBox();
 	drawColumnNames(names);
@@ -103,7 +103,7 @@ inline void ExplorerBox<T>::drawAll(array<string, COLUMNS_COUNT> names)
 }
 
 template<class T>
-inline void ExplorerBox<T>::drawBox()
+inline void GenericMenu<T>::drawBox()
 {
 	int width = getBoxWidth();
 	COORD draw_pos = pos;
@@ -159,7 +159,7 @@ inline void ExplorerBox<T>::drawBox()
 }
 
 template<class T>
-inline void ExplorerBox<T>::drawColumnNames(array<string, COLUMNS_COUNT> names)
+inline void GenericMenu<T>::drawColumnNames(array<string, COLUMNS_COUNT> names)
 {
 	COORD draw_pos = pos;
 	draw_pos.Y += 3;
@@ -174,7 +174,7 @@ inline void ExplorerBox<T>::drawColumnNames(array<string, COLUMNS_COUNT> names)
 }
 
 template<class T>
-inline void ExplorerBox<T>::drawEntries()
+inline void GenericMenu<T>::drawEntries()
 {
 	COORD draw_pos = pos;
 	draw_pos.X++;
@@ -222,7 +222,7 @@ inline void ExplorerBox<T>::drawEntries()
 }
 
 template<class T>
-inline void ExplorerBox<T>::clearEntries()
+inline void GenericMenu<T>::clearEntries()
 {
 	string line;
 	line.resize(column_len[0], ' ');
@@ -243,7 +243,7 @@ inline void ExplorerBox<T>::clearEntries()
 }
 
 template<class T>
-inline void ExplorerBox<T>::drawPath()
+inline void GenericMenu<T>::drawPath()
 {
 	COORD draw_pos = pos;
 	draw_pos.X++;
@@ -264,7 +264,7 @@ inline void ExplorerBox<T>::drawPath()
 }
 
 template<class T>
-inline void ExplorerBox<T>::drawInfo(string line)
+inline void GenericMenu<T>::drawInfo(string line)
 {
 	COORD draw_pos = pos;
 	draw_pos.X++;

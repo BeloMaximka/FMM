@@ -1,7 +1,7 @@
 #pragma once
-#include "ExplorerBox.h"
+#include "GenericMenu.h"
 
-class VolumesBox : public ExplorerBox<Volume>
+class VolumesMenu : public GenericMenu<Volume>
 {
 	enum COLUMNS
 	{
@@ -11,7 +11,7 @@ class VolumesBox : public ExplorerBox<Volume>
 	};
 	bool finish = false;
 public:
-	VolumesBox(FileManager* fm);
+	VolumesMenu(FileManager* fm);
 	void startLoop();
 
 	void getInput();
