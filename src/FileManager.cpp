@@ -43,6 +43,9 @@ FileManager::Code FileManager::fsErrCodeToFMCode(int code)const
 	case 2:
 		return Code::DOESNT_EXIST;
 		break;
+	case 3:
+		return Code::PATH_UNREACHABLE;
+		break;
 	case 5:
 		return Code::ACCESS_DENIED;
 		break;

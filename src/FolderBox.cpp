@@ -14,6 +14,9 @@ void FolderBox::drawError(FileManager::Code code)
 	case FileManager::Code::DOESNT_EXIST:
 		drawInfo("This entry doesn't exist.");
 		break;
+	case FileManager::Code::PATH_UNREACHABLE:
+		drawInfo("Path is unreachable.");
+		break;
 	case FileManager::Code::ALREADY_EXIST:
 		drawInfo("The entry already exist.");
 		break;
@@ -125,8 +128,8 @@ void FolderBox::getInput()
 		drawInfo("Cleared.");
 		break;
 	case F5:
-		updateEntries();
 		drawInfo("Refreshed.");
+		updateEntries();
 		break;
 	case s:
 		showSize();

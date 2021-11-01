@@ -24,7 +24,8 @@ public:
 		ALREADY_EXIST,
 		ACCESS_DENIED,
 		UNKNOWN,
-		FAILED
+		FAILED,
+		PATH_UNREACHABLE
 	};
 	FileManager();
 	string formatSize(unsigned long long size);
